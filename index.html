@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UniProt Explorer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Computational biology API starter</p>
+        <h1 id="page-title">UniProt Explorer</h1>
+        <p class="lede">
+          Search by protein name, gene name, or UniProt accession. The app queries UniProtKB and summarizes useful protein annotations from the live API response.
+        </p>
+      </section>
+
+      <section class="search-panel" aria-label="UniProt search">
+        <form id="search-form" class="search-form">
+          <label class="field field-wide">
+            <span>Protein, gene, or accession</span>
+            <input id="query" name="query" type="search" value="BRCA1" autocomplete="off" required />
+          </label>
+
+          <label class="field">
+            <span>Organism taxon ID</span>
+            <input id="organism" name="organism" type="text" value="9606" inputmode="numeric" />
+          </label>
+
+          <label class="toggle">
+            <input id="reviewed" name="reviewed" type="checkbox" checked />
+            <span>Reviewed only</span>
+          </label>
+
+          <button type="submit">Search UniProt</button>
+        </form>
+
+        <div class="examples" aria-label="Example searches">
+          <button type="button" data-query="TP53">TP53</button>
+          <button type="button" data-query="insulin">insulin</button>
+          <button type="button" data-query="P04637">P04637</button>
+          <button type="button" data-query="green fluorescent protein" data-organism="">green fluorescent protein</button>
+        </div>
+      </section>
+
+      <section class="status-row" aria-live="polite">
+        <p id="status">Enter a search term to query UniProtKB.</p>
+        <a id="api-link" href="https://rest.uniprot.org/uniprotkb/search" target="_blank" rel="noreferrer">API endpoint</a>
+      </section>
+
+      <section id="results" class="results" aria-label="Search results"></section>
+    </main>
+
+    <template id="result-template">
+      <article class="result-card">
+        <div class="card-header">
+          <div>
+            <p class="accession"></p>
+            <h2></h2>
+          </div>
+          <span class="badge"></span>
+        </div>
+
+        <dl class="facts">
+          <div>
+            <dt>Gene</dt>
+            <dd class="gene"></dd>
+          </div>
+          <div>
+            <dt>Organism</dt>
+            <dd class="organism"></dd>
+          </div>
+          <div>
+            <dt>Length</dt>
+            <dd class="length"></dd>
+          </div>
+          <div>
+            <dt>Function</dt>
+            <dd class="function"></dd>
+          </div>
+        </dl>
+
+        <details>
+          <summary>Sequence preview</summary>
+          <pre class="sequence"></pre>
+        </details>
+
+        <a class="entry-link" target="_blank" rel="noreferrer">Open in UniProt</a>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
