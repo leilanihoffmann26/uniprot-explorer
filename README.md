@@ -17,13 +17,13 @@ A small static web app for learning computational biology APIs. It accepts a pro
 ## Run locally
 
 ```bash
-python3 -m http.server 8000
+python3 -m http.server 9000
 ```
 
 Then open:
 
 ```text
-http://localhost:8000
+http://localhost:9000
 ```
 
 ## API endpoint
